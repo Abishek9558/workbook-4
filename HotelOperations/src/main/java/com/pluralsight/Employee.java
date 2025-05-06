@@ -1,4 +1,5 @@
 package com.pluralsight;
+import java.time.LocalDateTime;
 
 public class Employee{
     private int employeeId;
@@ -7,6 +8,13 @@ public class Employee{
     private double payRate;
     private double hoursWorked;
     private double punchIntime;
+    private String formatTime(double time) {
+        int hours = (int) time;
+        int minutes = (int) ((time - hours) * 60);
+        return String.format("%02d:%02d", hours, minutes);
+    }
+
+
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -47,17 +55,26 @@ public class Employee{
         return regularPay + overtimePay;
     }
 
-    public void punchIn (double time) {
+    public void punchIn(double time) {
         punchIntime = time;
-        System.out.println(name +  "punch time: " + time);
+        System.out.println(name +  "punch time: " + formatTime(time));
     }
-    public void punchOut(double time)
-    {   double hours = time -punchIntime;
+    public void punchOut(double time) {
+        double hours = time - punchIntime;
         if (hours > 0) {
             hoursWorked += hours;
-            System.out.println(name + " punched out at: " + time+ "\nHours worked: " +hours);
-        }else {
+            System.out.println(name + " punched out at: " + formatTime(time) + "\nHours worked: " + hours);
+        } else {
             System.out.println("Error Invalid time");
         }
+    }public void punchIn () {
+            LocalDateTime now = LocalDateTime.now();
+            double time = now.getHour() + now.getMinute() / 60.0;
+            punchIn(time);
+        }
+        public void punchOut () {
+            LocalDateTime now = LocalDateTime.now();
+            double time = now.getHour() + now.getMinute() / 60.0;
+            punchOut(time);
+        }
     }
-}

@@ -17,11 +17,15 @@ public class Main {public static void main(String[] args) {
     Employee emp = new Employee(107, "Abishek ", "MAnager", 25.00, 45);
     System.out.println("Employee Total Pay: $" + emp.getTotalPay());
     System.out.println("Regular Hours: " + emp.getRegularHours());
-    emp.punchIn(9);
-    emp.punchOut(14);
+    emp.punchIn(9.5);
+    emp.punchOut(14.7);
+    emp.punchIn(3.5);
+    emp.punchOut(5);
     System.out.println("Overtime Hours: " + emp.getOvertimeHours());
     System.out.println("Employee name: " +emp.getName());
     System.out.println("Employee Id: " +emp.getEmployeeId());
     System.out.println("Department: " +emp.getDepartment());
+    System.out.println("Total hours: " + (emp.getRegularHours() +  emp.getOvertimeHours()));
+    System.out.println("Total pay: $" + emp.getTotalPay());
 }
 }
