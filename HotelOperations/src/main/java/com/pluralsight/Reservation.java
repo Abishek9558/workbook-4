@@ -26,7 +26,7 @@ public class Reservation { private String roomType;  // "king" or "double"
             basePrice = 124.00;
         }
         if (isWeekend) {
-            basePrice *= 1.10;  // increase by 10%
+            basePrice *= 1.10;         // increase by 10%
         }
         return basePrice;
     }
